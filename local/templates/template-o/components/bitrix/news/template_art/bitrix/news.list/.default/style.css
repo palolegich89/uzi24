@@ -1,0 +1,64 @@
+/*article*/
+.article{
+	margin:0 0 17px;
+}
+.article + .promo{
+	margin:0 0 26px;
+}
+.block-title{
+	font-size:20px;
+	line-height:normal;
+	font-weight:700;
+	margin:12px 0 7px;
+}
+.left-content .article{
+	max-width:960px;
+	margin-bottom:26px;
+}
+.art-item{
+	font-size:16px;
+	color:#000;
+	text-decoration:none;
+	font-weight:300;
+	display:inline-block;
+	vertical-align:top;
+	width:47%;
+	margin:11px 2.6% 0 0;
+}
+.left-content .art-item{
+	/*width:31.3%;*/
+	width:300px;
+	margin-right:2.6%;
+}
+.left-content .inner .art-item{
+	margin-bottom:65px;
+}
+.left-content .art-item:nth-child(3n+3){
+	margin-right:0;
+}
+.art-item .img{
+	height:146px;
+	overflow:hidden;
+	margin:0 0 24px;
+}
+.left-content .art-item .img{
+	margin:0 0 14px;
+}
+.art-item .title{
+	font-weight:700;
+	margin:0 0 7px;
+}
+.art-item .title{
+	font-weight:600;
+	font-size:16px;
+}
+.art-item .title a{
+	color:#000;
+	text-decoration: none;
+	border-bottom: 1px solid #b5b5b5;
+}
+.art-text,
+.art-item p{
+	font-size:14px;
+	line-height:24px;
+}
