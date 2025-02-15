@@ -1,4 +1,4 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -13,54 +13,55 @@
 $this->setFrameMode(true);
 //echo "<pre>";print_r($arParams["INFO_CLINICS"]);echo "</pre>";
 ?>
-<h2 class="page__content-title">Где сделать <?=$arResult["SERVICE"]['NAME'];?> круглосуточно</h2>  
+<h2 class="page__content-title">Где сделать <?= $arResult["SERVICE"]['NAME']; ?> круглосуточно</h2>
 <div class="clinic__list" id="clin_block">
-	<?foreach($arResult["ITEMS"] as $arItem):?>
+	<? foreach ($arResult["ITEMS"] as $arItem): ?>
 		<?
 		$this->AddEditAction($arItem["ID"], $arItem["EDIT_LINK"], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 		$this->AddDeleteAction($arItem["ID"], $arItem["DELETE_LINK"], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage("CT_BNL_ELEMENT_DELETE_CONFIRM")));
-		
-		$work_time = !empty($arItem["DISPLAY_PROPERTIES"]["ROUND_CLOCK"]["VALUE"])?"24 часа":$arItem["DISPLAY_PROPERTIES"]["WORKTIME"]["VALUE"];
-		
-		if(date("H:i") >= "08:00" && date("H:i") <= "21:00" && empty($arItem["PROPERTIES"]["NO_CHANGE_PHONE"]["VALUE"])){
+
+		$work_time = !empty($arItem["DISPLAY_PROPERTIES"]["ROUND_CLOCK"]["VALUE"]) ? "24 часа" : $arItem["DISPLAY_PROPERTIES"]["WORKTIME"]["VALUE"];
+
+		if (date("H:i") >= "08:00" && date("H:i") <= "21:00" && empty($arItem["PROPERTIES"]["NO_CHANGE_PHONE"]["VALUE"])) {
 			$phone = PHONE_DOKDOK;
 			$phoneUrl = PHONE_DOKDOK_URL;
-		}else{
+		} else {
 			$phone = $arItem["DISPLAY_PROPERTIES"]["PHONE"]["VALUE"];
 			$phoneUrl = $arItem["DISPLAY_PROPERTIES"]["PHONE"]["VALUE"];
 		}
-		
+
 		?>
-		<div class="clinic group" id="<?=$this->GetEditAreaId($arItem["ID"]);?>">
-		  <div class="clinic__logo">
-			<div class="like_table">
-			  <div class="table_cell"><img class="img-responsive center-block" src="<?=$arItem["DISPLAY_PROPERTIES"]["AVATAR"]["FILE_VALUE"]["SRC"];?>" alt="<?=$arItem["NAME"];?>" /></div>
+		<div class="clinic group" id="<?= $this->GetEditAreaId($arItem["ID"]); ?>">
+			<div class="clinic__logo">
+				<div class="like_table">
+					<div class="table_cell"><img class="img-responsive center-block" src="<?= $arItem["DISPLAY_PROPERTIES"]["AVATAR"]["FILE_VALUE"]["SRC"]; ?>" alt="<?= $arItem["NAME"]; ?>" /></div>
+				</div>
 			</div>
-		  </div>
-		  <div class="clinic__info">
-			<h3 class="clinic__name"><?=$arItem["NAME"];?></h3>
-			<p class="clinic__address"><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["VALUE"];?></p>
-			<p class="clinic__metro-distance">
-			<?=implode(", ", $arItem["DISPLAY_PROPERTIES"]["METRO"]["ITEMS"]);?><br/><br/>
-			<?=$arItem["DISPLAY_PROPERTIES"]["DESCRIPTION_UZI"]["VALUE"]["TEXT"];?>
-			</p>
-			<p class="clinic__phone"><a href="tel:<?=$phoneUrl;?>"><?=$phone;?></a><?if(!empty($work_time)):?><span> &mdash; <?=$work_time;?></span><?endif;?></p>
-		  </div>
-		  <?if(!empty($arResult["CLIN_PRICE"][$arItem["ID"]]["UF_PRICE"])):
-		  $PRICE = number_format($arResult["CLIN_PRICE"][$arItem["ID"]]["UF_PRICE"], 0, ',', ' ').' руб.';
-		  ?>
-		  <div class="clinic__price">
-			<div class="clinic__price-data orange">
-			  <div class="clinic__price-value"><?=$PRICE;?></div>
-			  <div class="clinic__price-service"><?=$arResult["SERVICE"]['NAME'];?></div>
+			<div class="clinic__info">
+				<h3 class="clinic__name"><?= $arItem["NAME"]; ?></h3>
+				<p class="clinic__address"><?= $arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["VALUE"]; ?></p>
+				<p class="clinic__metro-distance">
+					<? if ($arItem["DISPLAY_PROPERTIES"]["METRO"]["ITEMS"]) echo implode(", ", $arItem["DISPLAY_PROPERTIES"]["METRO"]["ITEMS"]); ?><br /><br />
+					<?= $arItem["DISPLAY_PROPERTIES"]["DESCRIPTION_UZI"]["VALUE"]["TEXT"]; ?>
+				</p>
+				<p class="clinic__phone"><a href="tel:<?= $phoneUrl; ?>"><?= $phone; ?></a><? if (!empty($work_time)): ?><span> &mdash; <?= $work_time; ?></span><? endif; ?></p>
 			</div>
-		  </div>
-		  <?endif;?>
+			<? if (!empty($arResult["CLIN_PRICE"][$arItem["ID"]]["UF_PRICE"])):
+				$PRICE = number_format($arResult["CLIN_PRICE"][$arItem["ID"]]["UF_PRICE"], 0, ',', ' ') . ' руб.';
+			?>
+				<div class="clinic__price">
+					<div class="clinic__price-data orange">
+						<div class="clinic__price-value"><?= $PRICE; ?></div>
+						<div class="clinic__price-service"><?= $arResult["SERVICE"]['NAME']; ?></div>
+					</div>
+				</div>
+			<? endif; ?>
 		</div>
-	<?//pre_dump($arItem["DISPLAY_PROPERTIES"]);?>
-	<?endforeach;?>
+		<? //pre_dump($arItem["DISPLAY_PROPERTIES"]);
+		?>
+	<? endforeach; ?>
 	<br />
-	<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-		<br /><?=$arResult["NAV_STRING"]?>
-	<?endif;?>
+	<? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
+		<br /><?= $arResult["NAV_STRING"] ?>
+	<? endif; ?>
 </div>

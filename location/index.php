@@ -170,7 +170,7 @@ if (!empty($get_location)) {
 			CHTTP::SetStatus("404 Not Found");
 			define("ERROR_404","Y");
 		}*/
-	} elseif (strstr($get_location, "_rayon")) {
+	} /*elseif (strstr($get_location, "_rayon")) {
 		$location_get = "";
 		$location_sef = "";
 
@@ -314,7 +314,7 @@ if (!empty($get_location)) {
 		{
 			CHTTP::SetStatus("404 Not Found");
 			define("ERROR_404","Y");
-		}*/
+		}**
 	} elseif (strstr($get_location, "_okrug")) {
 		$location_get = "";
 		$location_sef = "";
@@ -429,8 +429,8 @@ if (!empty($get_location)) {
 		{
 			CHTTP::SetStatus("404 Not Found");
 			define("ERROR_404","Y");
-		}*/
-	}
+		}**
+	}*/
 
 	if (!empty($sosed_metro_id)) {
 		$arFilter = array(
@@ -922,52 +922,52 @@ if (!empty($get_location)) {
 			$seo_metro[$el["UF_METRO"]] = true;
 		}
 		if (!empty($el["UF_RAYON"])) {
-			$seo_rayon[$el["UF_RAYON"]] = true;
+			//$seo_rayon[$el["UF_RAYON"]] = true;
 		}
 		if (!empty($el["UF_OKRUG"])) {
-			$seo_okrug[$el["UF_OKRUG"]] = true;
+			//$seo_okrug[$el["UF_OKRUG"]] = true;
 		}
 	}
 
 	$okrug = array();
-	$res = CIBlockElement::GetList(array(), array(
-		"IBLOCK_ID" => 3,
-		"ACTIVE" => "Y"
-	), false, false, array(
-		"ID",
-		"NAME",
-		"CODE"
-	));
-	while ($ob = $res->GetNextElement()) {
-		$arFields = $ob->GetFields();
-		$locations[$arFields["ID"]] = $arFields;
+	// $res = CIBlockElement::GetList(array(), array(
+	// 	"IBLOCK_ID" => 3,
+	// 	"ACTIVE" => "Y"
+	// ), false, false, array(
+	// 	"ID",
+	// 	"NAME",
+	// 	"CODE"
+	// ));
+	// while ($ob = $res->GetNextElement()) {
+	// 	$arFields = $ob->GetFields();
+	// 	$locations[$arFields["ID"]] = $arFields;
 
-		if ($seo_okrug[$arFields["ID"]]) {
-			$locations[$arFields["ID"]]["URL"] = "/location/okrug/" . $arFields["CODE"] . "/";
-		} else {
-			$locations[$arFields["ID"]]["URL"] = "/location/?location=" . $arFields["CODE"] . "_okrug";
-		}
+	// 	if ($seo_okrug[$arFields["ID"]]) {
+	// 		$locations[$arFields["ID"]]["URL"] = "/location/okrug/" . $arFields["CODE"] . "/";
+	// 	} else {
+	// 		$locations[$arFields["ID"]]["URL"] = "/location/?location=" . $arFields["CODE"] . "_okrug";
+	// 	}
 
-		$res1 = CIBlockElement::GetList(array(), array(
-			"IBLOCK_ID" => 2,
-			"ACTIVE" => "Y",
-			"PROPERTY_OKRUG" => $arFields["ID"]
-		), false, false, array(
-			"ID",
-			"NAME",
-			"CODE"
-		));
-		while ($ob1 = $res1->GetNextElement()) {
-			$arFields1 = $ob1->GetFields();
-			$locations[$arFields["ID"]]["RAYON"][$arFields1["ID"]] = $arFields1;
+	// 	$res1 = CIBlockElement::GetList(array(), array(
+	// 		"IBLOCK_ID" => 2,
+	// 		"ACTIVE" => "Y",
+	// 		"PROPERTY_OKRUG" => $arFields["ID"]
+	// 	), false, false, array(
+	// 		"ID",
+	// 		"NAME",
+	// 		"CODE"
+	// 	));
+	// 	while ($ob1 = $res1->GetNextElement()) {
+	// 		$arFields1 = $ob1->GetFields();
+	// 		$locations[$arFields["ID"]]["RAYON"][$arFields1["ID"]] = $arFields1;
 
-			if ($seo_rayon[$arFields1["ID"]]) {
-				$locations[$arFields["ID"]]["RAYON"][$arFields1["ID"]]["URL"] = "/location/rayon/" . $arFields1["CODE"] . "/";
-			} else {
-				$locations[$arFields["ID"]]["RAYON"][$arFields1["ID"]]["URL"] = "/location/?location=" . $arFields1["CODE"] . "_rayon";
-			}
-		}
-	}
+	// 		if ($seo_rayon[$arFields1["ID"]]) {
+	// 			$locations[$arFields["ID"]]["RAYON"][$arFields1["ID"]]["URL"] = "/location/rayon/" . $arFields1["CODE"] . "/";
+	// 		} else {
+	// 			$locations[$arFields["ID"]]["RAYON"][$arFields1["ID"]]["URL"] = "/location/?location=" . $arFields1["CODE"] . "_rayon";
+	// 		}
+	// 	}
+	// }
 
 	$res2 = CIBlockElement::GetList(array(), array(
 		"IBLOCK_ID" => 1,
@@ -1012,7 +1012,7 @@ if (!empty($get_location)) {
 				<? endforeach; ?>
 			</div>
 		</div>
-		<div class="metro-stations__part">
+		<?/*<div class="metro-stations__part">
 			<h2 class="metro-stations__part-title">Клиники по районам и округам</h2>
 			<div class="metro-stations__columns">
 				<? foreach ($locations as $key => $value): ?>
@@ -1026,7 +1026,7 @@ if (!empty($get_location)) {
 					</div>
 				<? endforeach; ?>
 			</div>
-		</div>
+		</div>*/ ?>
 	</div>
 <?
 }

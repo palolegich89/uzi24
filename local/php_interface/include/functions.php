@@ -133,7 +133,6 @@ function array_sort($array, $on, $count, $order = SORT_ASC)
     return $new_array;
 }
 
-
 function record_sort($records, $field, $reverse = false)
 {
     $hash = array();
@@ -171,6 +170,7 @@ function clinic24ToStr($count)
     }
     return $pre_count . ' ' . $count . ' ' . $str;
 }
+
 function clinicToStr($count)
 {
     $str = '';
@@ -188,6 +188,7 @@ function clinicToStr($count)
     }
     return $pre_count . ' ' . $count . ' ' . $str;
 }
+
 // Поиск ID элемента или секции по символьному коду
 function getIdByCode($code, $iblock_id, $type)
 {
@@ -240,211 +241,180 @@ function echoStars($default = 3, $max = 5)
         echo '<li class="' . $class . '"></li>';
     }
 }
-/*
-class cIBlockElementExtended extends CIBlockElement2
-{
-    public static function GetList($arOrder=false, $arFilter=array(), $arGroupBy=false, $arNavStartParams=false, $arSelectFields=array(), $listIds = false)
-    {
-        global $DB;
 
-        $el = new cIBlockElementExtended();
-        $el->prepareSql($arSelectFields, $arFilter, $arGroupBy, $arOrder);
-
-        if($el->bOnlyCount)
-        {
-            $res = $DB->Query("
-                SELECT ".$el->sSelect."
-                FROM ".$el->sFrom."
-                WHERE 1=1 ".$el->sWhere."
-                ".$el->sGroupBy."
-            ");
-            $res = $res->Fetch();
-            return $res["CNT"];
-        }
-
-//        echo "OrderBy = ".$el->sOrderBy."<br>";
-//        echo "sGroupBy = ".$el->sGroupBy."<br>";
-//            echo "branch 0<br>";
-        if(!empty($arNavStartParams) && is_array($arNavStartParams))
-        {
-//            echo "branch 1<br>";
-            $nTopCount = (isset($arNavStartParams["nTopCount"]) ? (int)$arNavStartParams["nTopCount"] : 0);
-            $nElementID = (isset($arNavStartParams["nElementID"]) ? (int)$arNavStartParams["nElementID"] : 0);
-
-            if($nTopCount > 0)
-            {
-                $strSql = "
-                    SELECT ".$el->sSelect."
-                    FROM ".$el->sFrom."
-                    WHERE 1=1 ".$el->sWhere."
-                    ".$el->sGroupBy."
-                    ".$el->sOrderBy;
-                    $count = 1;
-                    if($listIds  && !$el->sOrderBy)
-                        {
-                            $strSql;
-                            $counter = count($listIds);
-                            $strSql .= " ORDER BY FIELD(BE.ID, ";
-                            foreach($listIds as $id)
-                                {
-                                    $strSql .= "".$id."";
-                                    if($count<$counter)$strSql .= ",";
-                                    $count++;
-                                }
-                            $strSql .= ") ";
-                        }
-                    $strSql .= "
-                    LIMIT ".$nTopCount;
-
-                $res = $DB->Query($strSql);
-//                echo "branch 1 - 0<br>";
-            }
-            elseif(
-                $nElementID > 0
-                && $el->sGroupBy == ""
-                && $el->sOrderBy != ""
-                && strpos($el->sSelect, "BE.ID") !== false
-                && !$el->bCatalogSort
-            )
-            {
-//                echo "branch 1 - 1<br>";
-                $nPageSize = (isset($arNavStartParams["nPageSize"]) ? (int)$arNavStartParams["nPageSize"] : 0);
-
-                if($nPageSize > 0)
-                {
-//                    echo "branch 1 - 1 - 0<br>";
-                    $DB->Query("SET @rank=0");
-                    $DB->Query("
-                        SELECT @rank:=el1.rank
-                        FROM (
-                            SELECT @rank:=@rank+1 AS rank, el0.*
-                            FROM (
-                                SELECT ".$el->sSelect."
-                                FROM ".$el->sFrom."
-                                WHERE 1=1 ".$el->sWhere."
-                                ".$el->sGroupBy."
-                                ".$el->sOrderBy."
-                                LIMIT 18446744073709551615
-                            ) el0
-                        ) el1
-                        WHERE el1.ID = ".$nElementID."
-                    ");
-                    $DB->Query("SET @rank2=0");
-
-                    $res = $DB->Query("
-                        SELECT *
-                        FROM (
-                            SELECT @rank2:=@rank2+1 AS RANK, el0.*
-                            FROM (
-                                SELECT ".$el->sSelect."
-                                FROM ".$el->sFrom."
-                                WHERE 1=1 ".$el->sWhere."
-                                ".$el->sGroupBy."
-                                ".$el->sOrderBy."
-                                LIMIT 18446744073709551615
-                            ) el0
-                        ) el1
-                        WHERE el1.RANK between @rank-$nPageSize and @rank+$nPageSize
-                    ");
-                }
-                else
-                {
-//                    echo "branch 1 - 1 - 1<br>";                    
-                    $DB->Query("SET @rank=0");
-                    $res = $DB->Query("
-                        SELECT el1.*
-                        FROM (
-                            SELECT @rank:=@rank+1 AS RANK, el0.*
-                            FROM (
-                                SELECT ".$el->sSelect."
-                                FROM ".$el->sFrom."
-                                WHERE 1=1 ".$el->sWhere."
-                                ".$el->sGroupBy."
-                                ".$el->sOrderBy."
-                                LIMIT 18446744073709551615
-                            ) el0
-                        ) el1
-                        WHERE el1.ID = ".$nElementID."
-                    ");
-                }
-            }
-            else
-            {
-//            echo "branch 1 - 2 - 0<br>";
-                if ($el->sGroupBy == "")
-                {
-//                    echo "branch 1 - 2 - 1<br>";
-                    $strSql = 
-                    $res_cnt = $DB->Query("
-                        SELECT COUNT(".($el->bDistinct? "DISTINCT BE.ID": "'x'").") as C
-                        FROM ".$el->sFrom."
-                        WHERE 1=1 ".$el->sWhere."
-                        ".$el->sGroupBy."
-                    ");
-                    $res_cnt = $res_cnt->Fetch();
-                    $cnt = $res_cnt["C"];
-                }
-                else
-                {
-//                    echo "branch 1 - 2 - 2<br>";                                                                            
-                    $res_cnt = $DB->Query("
-                        SELECT 'x'
-                        FROM ".$el->sFrom."
-                        WHERE 1=1 ".$el->sWhere."
-                        ".$el->sGroupBy."
-                    ");
-                    $cnt = $res_cnt->SelectedRowsCount();
-                }
-
-                $strSql = "
-                    SELECT ".$el->sSelect."
-                    FROM ".$el->sFrom."
-                    WHERE 1=1 ".$el->sWhere."
-                    ".$el->sGroupBy."
-                    ".$el->sOrderBy."
-                ";
-                $res = new CDBResult();
-                
-                if($listIds && !$el->sOrderBy)
-                {
-                    $count=1;
-                    $counter = count($listIds);
-                    $strSql .= " ORDER BY FIELD(BE.ID, ";
-                    foreach($listIds as $id)
-                        {
-                            $strSql .= "".$id."";
-                            if($count<$counter)$strSql .= ",";
-                            $count++;
-                        }
-                    $strSql .= ") ";
-                }
-                //echo "strSql = ".$strSql."<br>";
-                
-                
-                $res->NavQuery($strSql, $cnt, $arNavStartParams);
-            }
-        }
-        else//if(is_array($arNavStartParams))
-        {
-//            echo "branch 2 - 0 - 0<br>";                                                                                        
-            $strSql = "
-                SELECT ".$el->sSelect."
-                FROM ".$el->sFrom."
-                WHERE 1=1 ".$el->sWhere."
-                ".$el->sGroupBy."
-                ".$el->sOrderBy."
-            ";
-            $res = $DB->Query($strSql, false, "FILE: ".__FILE__."<br> LINE: ".__LINE__);
-        }
-
-        $res = new CIBlockResult($res);
-        $res->SetIBlockTag($el->arFilterIBlocks);
-        $res->arIBlockMultProps = $el->arIBlockMultProps;
-        $res->arIBlockConvProps = $el->arIBlockConvProps;
-        $res->arIBlockAllProps  = $el->arIBlockAllProps;
-        $res->arIBlockNumProps = $el->arIBlockNumProps;
-        $res->arIBlockLongProps = $el->arIBlockLongProps;
-
-        return $res;
+/**
+ * Преобразует JSON-строку с расписанием в удобочитаемое описание.
+ *
+ * Если в расписании присутствует запись с Day="0" (пн–пт), она выводится как есть.
+ * Остальные записи (например, для сб и вс) группируются по интервалу времени и выводятся с диапазоном дней,
+ * если они идут подряд.
+ *
+ * Пример для JSON:
+ * [{"Day":"0","StartTime":"08:00","EndTime":"22:00","DayTitle":"пн-пт"},
+ *  {"Day":"6","StartTime":"08:00","EndTime":"22:00","DayTitle":"сб"},
+ *  {"Day":"7","StartTime":"08:00","EndTime":"22:00","DayTitle":"вс"}]
+ *
+ * Ожидаемый результат:
+ * "пн-пт с 08:00 до 22:00, Сб-Вск с 08:00 до 22:00"
+ *
+ * @param string $json JSON-строка с расписанием.
+ * @return string Отформатированное расписание.
+ */
+function formatSchedule(string $json): string {
+    $data = json_decode($json, true);
+    if (!is_array($data) || empty($data)) {
+        return '';
     }
-} */
+    
+    // Разделяем записи: специальные (с Day = "0") и обычные (с конкретным днем)
+    $special = []; // для записей с Day = "0" (например, "пн-пт")
+    $normal  = []; // для остальных (например, сб, вс)
+    
+    foreach ($data as $entry) {
+        if ($entry['Day'] === "0") {
+            $special[] = $entry;
+        } else {
+            $normal[] = $entry;
+        }
+    }
+    
+    $outputs = [];
+    
+    // Вывод для специальной группы: используем значение DayTitle как задано (например, "пн-пт")
+    foreach ($special as $entry) {
+        $outputs[] = "{$entry['DayTitle']} с {$entry['StartTime']} до {$entry['EndTime']}";
+    }
+    
+    // Группируем обычные записи по интервалу времени
+    $normalGroups = [];
+    foreach ($normal as $entry) {
+        $intervalKey = $entry['StartTime'] . '-' . $entry['EndTime'];
+        if (!isset($normalGroups[$intervalKey])) {
+            $normalGroups[$intervalKey] = [];
+        }
+        $normalGroups[$intervalKey][] = $entry;
+    }
+    
+    // Стандартное отображение для обычных дней
+    $dayMapping = [
+        1 => 'Пн',
+        2 => 'Вт',
+        3 => 'Ср',
+        4 => 'Чт',
+        5 => 'Пт',
+        6 => 'Сб',
+        7 => 'Вск'
+    ];
+    
+    foreach ($normalGroups as $interval => $entries) {
+        // Сортируем записи по числовому значению дня
+        usort($entries, function($a, $b) {
+            return ((int)$a['Day']) - ((int)$b['Day']);
+        });
+        // Извлекаем номера дней
+        $days = array_map(function($entry) {
+            return (int)$entry['Day'];
+        }, $entries);
+        
+        // Если более одной записи — выводим диапазон (например, "Сб-Вск")
+        if (count($days) > 1) {
+            $firstDay = $days[0];
+            $lastDay  = $days[count($days) - 1];
+            $dayStr = $dayMapping[$firstDay] . '-' . $dayMapping[$lastDay];
+        } else {
+            $dayStr = $dayMapping[$days[0]];
+        }
+        
+        // Все записи в группе имеют одинаковый интервал, поэтому берем время из первой записи
+        $startTime = $entries[0]['StartTime'];
+        $endTime   = $entries[0]['EndTime'];
+        $outputs[] = "{$dayStr} с {$startTime} до {$endTime}";
+    }
+    
+    return implode(', ', $outputs);
+}
+
+/**
+ * Возвращает описание рабочего времени на текущий день с указанием статуса.
+ * Если сегодня рабочий день, для него берётся запись с Day="0" (пн–пт),
+ * а для выходных — ищется соответствующая запись (Day="6" или "7").
+ *
+ * Примеры результатов:
+ *   "Работает с 08:00 до 22:00 (сейчас открыто)"
+ *   "Работает с 08:00 до 22:00 (сейчас закрыто)"
+ *   "Сегодня закрыто" – если для текущего дня расписание отсутствует.
+ *
+ * @param string $json JSON-строка с расписанием.
+ * @return string Описание для текущего дня.
+ */
+function getTodaySchedule(string $json): string {
+    $schedule = json_decode($json, true);
+    if (!is_array($schedule)) {
+        return "Сегодня закрыто";
+    }
+    
+    // Получаем текущий день недели (1 = Пн, …, 7 = Вс)
+    $currentDayNum = (int) date('N');
+    // Если сегодня Пн–Пт, то ищем запись с Day="0"
+    if ($currentDayNum >= 1 && $currentDayNum <= 5) {
+        $searchDay = "0";
+    } else {
+        // Сб (6) или Вс (7)
+        $searchDay = (string)$currentDayNum;
+    }
+    
+    $entry = null;
+    foreach ($schedule as $item) {
+        if ($item['Day'] === $searchDay) {
+            $entry = $item;
+            break;
+        }
+    }
+    
+    if (!$entry) {
+        return "Сегодня закрыто";
+    }
+    
+    $startTime = $entry['StartTime'];
+    $endTime   = $entry['EndTime'];
+    
+    // Сравнение времени через strtotime
+    $currentTime    = strtotime(date('H:i'));
+    $startTimestamp = strtotime($startTime);
+    $endTimestamp   = strtotime($endTime);
+    
+    $status = ($currentTime >= $startTimestamp && $currentTime < $endTimestamp)
+              ? "(сейчас открыто)" : "(сейчас закрыто)";
+    
+    return "Работает с {$startTime} до {$endTime} {$status}";
+}
+
+/**
+ * Проверяет, работает ли объект круглосуточно.
+ *
+ * Функция принимает JSON-строку с расписанием, где каждая запись содержит поля:
+ * - StartTime
+ * - EndTime
+ * - и другие (например, Day, DayTitle)
+ *
+ * Если все записи в расписании имеют StartTime = "00:00" и EndTime = "24:00",
+ * функция возвращает true. Иначе — false.
+ *
+ * @param string $json JSON-строка с расписанием.
+ * @return string true, если все записи указывают на круглосуточный режим, иначе false.
+ */
+function isRoundTheClock(string $json): string
+{
+    $data = json_decode($json, true);
+    if (!is_array($data) || empty($data)) {
+        return false;
+    }
+
+    foreach ($data as $entry) {
+        if ($entry['StartTime'] !== '00:00' || !in_array($entry['EndTime'], ['24:00', '23:00', '23:59'])) {
+            return "";
+        }
+    }
+
+    return "Y";
+}
