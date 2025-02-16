@@ -29,12 +29,12 @@ $this->setFrameMode(true);
 			$phone = $arItem["DISPLAY_PROPERTIES"]["PHONE"]["VALUE"];
 			$phoneUrl = $arItem["DISPLAY_PROPERTIES"]["PHONE"]["VALUE"];
 		}
-
+		$file_logo = CFile::ResizeImageGet($arItem["DISPLAY_PROPERTIES"]["AVATAR"]["FILE_VALUE"], array('width'=>175, 'height'=>165), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true);
 		?>
 		<div class="clinic group" id="<?= $this->GetEditAreaId($arItem["ID"]); ?>">
 			<div class="clinic__logo">
 				<div class="like_table">
-					<div class="table_cell"><img class="img-responsive center-block" src="<?= $arItem["DISPLAY_PROPERTIES"]["AVATAR"]["FILE_VALUE"]["SRC"]; ?>" alt="<?= $arItem["NAME"]; ?>" /></div>
+					<div class="table_cell"><img class="img-responsive center-block" src="<?= $file_logo['src'] ?>" alt="<?= $arItem["NAME"]; ?>" /></div>
 				</div>
 			</div>
 			<div class="clinic__info">
@@ -45,7 +45,17 @@ $this->setFrameMode(true);
 					<?= $arItem["DISPLAY_PROPERTIES"]["DESCRIPTION_UZI"]["VALUE"]["TEXT"]; ?>
 				</p>
 				<p class="clinic__phone"><a href="tel:<?= $phoneUrl; ?>"><?= $phone; ?></a><? if (!empty($work_time)): ?><span> &mdash; <?= $work_time; ?></span><? endif; ?></p>
-			</div>
+                <a class="btn-record">Записаться онлайн</a>
+				<? if (!empty($arResult["CLINIC_PRICE"][$arItem["ID"]])):?>
+                    <ul class="price_list">
+						<? foreach ($arResult["CLINIC_PRICE"][$arItem["ID"]] as $SERVICES):
+							$PRICE = number_format($SERVICES["UF_PRICE"], 0, ',', ' ') . ' руб.';
+							?>
+                            <li><span class="left"><?= $SERVICES["NAME"] ?></span><span class="right"><?= $PRICE ?></span></li>
+						<? endforeach; ?>
+                    </ul>
+				<? endif; ?>
+            </div>
 			<? if (!empty($arResult["CLIN_PRICE"][$arItem["ID"]]["UF_PRICE"])):
 				$PRICE = number_format($arResult["CLIN_PRICE"][$arItem["ID"]]["UF_PRICE"], 0, ',', ' ') . ' руб.';
 			?>

@@ -17,14 +17,13 @@ $PRICE = 'от '.number_format($arResult["sort_price"][0]["UF_PRICE"], 0, ',', '
 $chain = !empty($arResult["META_TAGS"]["ELEMENT_CHAIN"])?$arResult["META_TAGS"]["ELEMENT_CHAIN"]:$arResult["NAME"];
 $h1 = !empty($arResult["META_TAGS"]["TITLE"])?$arResult["META_TAGS"]["TITLE"]:$arResult["NAME"]; 
 ?>
-
 <div class="page__preview">
 	<div class="inside group">
-		<div class="page__preview-info">
+		<div class="page__preview-info" <?if(empty($arResult["DETAIL_TEXT"])):?>style="min-height: unset;"<? endif; ?>>
 			<div class="breadcrumbs"><a href="/">Главная</a><span><?echo $chain;?></span></div>
 			<h1 class="page__preview-title"><?echo $h1;?></h1>
 			<div class="page__preview-desc">
-			
+
 				<?echo $arResult["DISPLAY_PROPERTIES"]["TOP_TEXT"]["~VALUE"]["TEXT"];?>
 				<?if(!empty($arResult["DETAIL_TEXT"])):?>
 					<span class="spoiler-text"><?echo $arResult["DETAIL_TEXT"];?></span>
@@ -32,9 +31,13 @@ $h1 = !empty($arResult["META_TAGS"]["TITLE"])?$arResult["META_TAGS"]["TITLE"]:$a
 				<?endif;?>
 			</div>
 		</div>
+		<?if($PRICE > 0):?>
 		<div class="page__service text-center">
-			<img class="img-responsive center-block img-circle" src="<?echo $arResult["PROPERTIES"]["AVATAR"]["SRC"];?>" alt="<?echo $arResult["NAME"];?>" />
+			<?if($arResult["PROPERTIES"]["AVATAR"]["SRC"]):?>
+                <img class="img-responsive center-block img-circle" src="<?= $arResult["PROPERTIES"]["AVATAR"]["SRC"];?>" alt="<?echo $arResult["NAME"];?>" />
+            <?endif;?>
 			<p><?echo $arResult["NAME"];?> <span><?=$PRICE?></span></p>
 		</div>
+		<?endif;?>
 	</div>
 </div>
