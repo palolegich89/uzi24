@@ -7,7 +7,7 @@ use Bitrix\Main\Application;
 
 $request = Application::getInstance()->getContext()->getRequest();
 $post_list = $request->getPostList();
-pre_dump($request);die();
+
 $docdoc_login = DOCDOC_LOGIN;
 $docdoc_pass = DOCDOC_PASS;
 
@@ -38,17 +38,15 @@ if (!empty($post_list['record_type'])) {
     $arOrderPost = [];
 
     // Поля предзаявки
-    if (!empty($post_list['slot']) && empty($post_list['validationCode'])) {
+    if (empty($post_list['validationCode'])) {
         $preOrder = true;
         $arOrderPost = [
-            'slotId' => $post_list['slot'],
             'validate' => 1,
             'name' => $post_list['name'],
             'phone' => $post_list['phone'],
-            'doctor' => $post_list['doctor'],
             'clinic' => $post_list['clinic'],
             'city' => 1,
-            'stations' => [118, 23, 43],
+            'stations' => [],
             'dateAdmission' => $post_list['admission'],
         ];
         $post = $arOrderPost;
@@ -61,14 +59,11 @@ if (!empty($post_list['record_type'])) {
         $arOrderPost = [
             'name' => $post_list['name'],
             'phone' => $post_list['phone'],
-            'doctor' => $post_list['doctor'],
             'clinic' => $post_list['clinic'],
             'city' => 1,
-            'stations' => [118, 23, 43],
+            'stations' => [],
             'validationCode' => $post_list['validationCode'],
             'requestId' => $post_list['requestId'],
-            'slotId' => $post_list['slot'],
-            'dateAdmission' => $post_list['date'],
         ];
         $post = $arOrderPost;
     }

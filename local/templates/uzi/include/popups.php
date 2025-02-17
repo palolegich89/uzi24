@@ -1,16 +1,13 @@
 <? require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php"); ?>
 <div class="overlay"></div>
 
-<div class="js-record record-form popup form" id="record-popup">
+<div class="js-record record-form js-record-form popup form" id="record-popup">
     <div>
         <div class="h2">Запись на процедуру</div>
 
         <form method="post" class="js-form" id="recordForm">
             <input type="hidden" name="record_type" value="clinic">
             <input type="hidden" name="clinic" value="">
-            <input type="hidden" name="doctor" value="">
-            <input type="hidden" name="slot" value="">
-            <input type="hidden" name="date" value="">
 
             <input required="" class="input-text" type="text" name="name"
                            placeholder="Ваше имя">

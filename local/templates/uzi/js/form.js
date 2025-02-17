@@ -733,3 +733,12 @@ function hideForm() {
     $('body').removeClass('show-record-form');
     document.getElementsByTagName("body")[0].style.overflow = 'scroll';
 }*/
+$('.js-record').on('click', function (e) {
+
+    var clinicId = $(this).data('clinic');
+    console.log(clinicId);
+    var hiddenInput = $('.js-form input[name="clinic"]');
+
+    hiddenInput.val(clinicId);
+
+});

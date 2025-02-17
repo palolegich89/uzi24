@@ -56,7 +56,8 @@ $this->setFrameMode(true);
                         <a href="tel:<?= $phoneUrl; ?>"><?= $phone; ?></a>
                         <? if (!empty($work_time)): ?><span> &mdash; <?= $work_time; ?></span><? endif; ?>
                     </p>
-                    <a class="btn-record">Записаться онлайн</a>
+                    <a class="btn-record schedule__item info_data js-record" data-fancybox="" data-src="#record-popup"
+                       data-clinic="<?=$arItem["EXTERNAL_ID"]?>">Записаться онлайн</a>
 					<? if (!empty($arItem["SERVICES"])):?>
                         <ul class="price_list">
 							<? foreach ($arItem["SERVICES"] as $SERVICES):

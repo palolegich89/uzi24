@@ -53,6 +53,15 @@ foreach ($arResult["ITEMS"] as $key => $value) {
 	}
 }
 
+if (!empty($arResult["ITEMS"])) {
+	foreach ($arResult["ITEMS"] as &$clinicGroup) {
+		if (count($clinicGroup["SERVICES"]) > 3) {
+			shuffle($clinicGroup["SERVICES"]);
+			$clinicGroup["SERVICES"] = array_slice($clinicGroup["SERVICES"], 0, 3);
+		}
+	}
+}
+
 foreach ($arResult["ITEMS"] as $cell => $arItem) {
 	foreach ($arItem["DISPLAY_PROPERTIES"]["METRO"]["VALUE"] as $key => $metro) {
 		$distans_metro = !empty($arItem["DISPLAY_PROPERTIES"]["METRO"]["DESCRIPTION"][$key]) ? " (" . $arItem["DISPLAY_PROPERTIES"]["METRO"]["DESCRIPTION"][$key] . ")" : false;

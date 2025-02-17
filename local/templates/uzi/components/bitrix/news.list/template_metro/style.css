@@ -1,0 +1,58 @@
+.alphabet {
+    margin: 40px auto;
+}
+
+.alphabet.expanded {
+    height: auto;
+}
+
+.ab-column {
+    width: 21.79%;
+    color: #000000;
+    float: left;
+    margin: 0 2.4% 0 0;
+}
+
+.ab-column a {
+    color: #000000;
+}
+
+.alphabet .ab-list {
+    padding: 0 0 0 30px;
+    position: relative;
+}
+
+.letter {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 16px;
+    color: #fff;
+    top: 2px;
+    left: 0;
+    font-size: 12px;
+    background: #000000;
+}
+
+.ab-list > ul > li {
+    overflow: hidden;
+    position: relative;
+    margin: 0 0 8px;
+}
+
+.clear:after {
+    content: "";
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+
+@media screen and (max-width: 650px) {
+    .four-columns .ab-column {
+        font-size: large;
+        width: auto;
+    }
+}
+
