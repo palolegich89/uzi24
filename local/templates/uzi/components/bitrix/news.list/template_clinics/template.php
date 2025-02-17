@@ -45,7 +45,7 @@ $this->setFrameMode(true);
 					<?= $arItem["DISPLAY_PROPERTIES"]["DESCRIPTION_UZI"]["VALUE"]["TEXT"]; ?>
 				</p>
 				<p class="clinic__phone"><a href="tel:<?= $phoneUrl; ?>"><?= $phone; ?></a><? if (!empty($work_time)): ?><span> &mdash; <?= $work_time; ?></span><? endif; ?></p>
-                <a class="btn-record">Записаться онлайн</a>
+                <a class="btn-record schedule__item radio info_data js-record" data-fancybox="" data-src="#record-popup" data-format-date="06.02.2025 15:00" data-doctor="414334" data-clinic="44" data-slot="mcservice_59420#46292286_2025-02-06T15:00:00_2025-02-06T15:30:00" data-date="2025-02-06 15:00">Записаться онлайн</a>
 				<? if (!empty($arResult["CLINIC_PRICE"][$arItem["ID"]])):?>
                     <ul class="price_list">
 						<? foreach ($arResult["CLINIC_PRICE"][$arItem["ID"]] as $SERVICES):

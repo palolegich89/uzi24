@@ -8653,13 +8653,7 @@ button.button-find:active,button.button-find:focus,button.button-find:hover
     resize: none;
     width: 100%;
 }
-.form button
-{
-    display: block;
-    height: 50px;
-    margin: auto;
-    width: 170px;
-}
+
 .main-screen
 {
     background: url(images/screen.jpg) no-repeat;

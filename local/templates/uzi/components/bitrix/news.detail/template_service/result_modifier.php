@@ -21,6 +21,21 @@ $service = $arResult;
 
 $sort_price = record_sort($cat_info_g, 'UF_PRICE');
 
+if (empty($sort_price)) {
+	CModule::IncludeModule("iblock");
+	$serviceChildIDs = [];
+	$arFilter = array("IBLOCK_ID" => $arParams['IBLOCK_ID'], "ACTIVE" => "Y", "PROPERTY_PARENT" => $arResult["ID"]);
+	$res = CIBlockElement::GetList(array(), $arFilter, false, false, array("ID"));
+	while ($ob = $res->GetNextElement()) {
+		$arFields = $ob->GetFields();
+		$serviceChildIDs[] = $arFields['ID'];
+	}
+	// Получаем информацию из хайлоадблока для дочерних сервисов
+	$child_info = gethlel(1, "UF_SERVICE", $serviceChildIDs);
+
+	$sort_price = record_sort($child_info, 'UF_PRICE');
+}
+
 foreach($sort_price as $key => $item){
 	if(!empty($item["UF_PRICE"])){
 		$arResult["sort_price"][] = $item;

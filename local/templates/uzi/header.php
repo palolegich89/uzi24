@@ -24,25 +24,10 @@
           rel="stylesheet"/>
     <link type="text/css" href="<?= SITE_TEMPLATE_PATH ?>/js/ui/jqueryui.custom.css" rel="stylesheet"/>
 
-    <script src="<?= SITE_TEMPLATE_PATH ?>/js/jquery-1.8.3.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="<?= SITE_TEMPLATE_PATH ?>/js/ui/jqueryui.custom.js"></script>
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
 	<? $APPLICATION->ShowHead(); ?>
-
-    </script>
-    <script type="text/javascript">
-        // <![CDATA[
-        jQuery(document).ready(function () {
-            jQuery('.spoiler-text').hide()
-            jQuery('.spoiler').click(function () {
-                jQuery(this).toggleClass("folded").toggleClass("unfolded").prev().slideToggle();
-                jQuery(this).css('display', 'none');
-                return false;
-            })
-        })
-        // ]]>
-    </script>
-
 </head>
 <body>
 <? $APPLICATION->ShowPanel(); ?>
@@ -107,31 +92,31 @@
     </div>
 <? endif ?>
 <? if ($page == 'main'): ?>
-<main>
-    <div class="main-page container">
-        <div class="inner group">
+    <main>
+        <div class="main-page container">
+            <div class="inner group">
 
-			<? elseif ($APPLICATION->GetCurDir() == '/location/' && empty($_GET['location'])): ?>
-            <main>
-                <div class="page container">
-                    <div class="inside group">
-                        <div class="metro-stations">
-							<? else: ?>
-                            <main>
-                                <div class="page container">
-									<? $APPLICATION->IncludeComponent("bitrix:breadcrumb", "template", array(
-										"PATH" => "",
-										"SITE_ID" => "s1",
-										"START_FROM" => "0"
-									),
-										false,
-										array(
-											"ACTIVE_COMPONENT" => "N"
-										)
-									); ?>
-									<? $APPLICATION->ShowViewContent('head_block'); ?>
-                                    <div class="inside group">
-                                        <div class="page__content">
-                                            <div class="content">
-												<? endif ?>
+<? elseif ($APPLICATION->GetCurDir() == '/location/' && empty($_GET['location'])): ?>
+    <main>
+        <div class="page container">
+            <div class="inside group">
+                <div class="metro-stations">
+<? else: ?>
+    <main>
+        <div class="page container">
+            <? $APPLICATION->IncludeComponent("bitrix:breadcrumb", "template", array(
+                "PATH" => "",
+                "SITE_ID" => "s1",
+                "START_FROM" => "0"
+            ),
+                false,
+                array(
+                    "ACTIVE_COMPONENT" => "N"
+                )
+            ); ?>
+            <? $APPLICATION->ShowViewContent('head_block'); ?>
+            <div class="inside group">
+                <div class="page__content">
+                    <div class="content">
+<? endif ?>
                                                 

@@ -25,12 +25,12 @@ window.addEventListener('DOMContentLoaded', function () {
         $('html, body').animate({ scrollTop: $(_block).offset().top - 25 }, 1500);
     });
 
-    $('.metro-stations__columns').isotope({
-        itemSelector: '.metro-stations__one',
-        percentPosition: true,
-        masonry: {
-            // use outer width of grid-sizer for columnWidth
-            columnWidth: '.metro-stations__one'
-        }
-    });
+    // $('.metro-stations__columns').isotope({
+    //     itemSelector: '.metro-stations__one',
+    //     percentPosition: true,
+    //     masonry: {
+    //         // use outer width of grid-sizer for columnWidth
+    //         columnWidth: '.metro-stations__one'
+    //     }
+    // });
 });

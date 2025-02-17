@@ -165,3 +165,211 @@ button.button-add {
     color: #fff;
     background: #096295;
 }
+
+
+
+/*-----------------------*/
+
+.input-text {
+    width: 100%;
+    background: #efefef;
+    height: 41px;
+    line-height: normal;
+    padding: 0 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0 0 11px;
+    color: #000;
+    resize: none;
+}
+
+.text {
+    font-size: 14px;
+    padding: 13px 18px;
+    height: 147px;
+}
+
+.popup .button {
+    display: block;
+    width: 200px;
+    margin: 23px auto 19px;
+}
+
+.popup {
+    /*position: absolute;*/
+    /*width: 650px;*/
+    /*background: #fff;*/
+    /*border-radius: 4px;*/
+    /*z-index: 999;*/
+    /*top: 100px;*/
+    /*left: 100px;*/
+    display: none;
+    max-width: 650px;
+}
+
+.btn-disabled {
+    background: gray !important;
+}
+
+.button {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    background: #009595;
+    text-align: center;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 11px 16px 12px;
+    cursor: pointer;
+}
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    background: rgba(0, 0, 0, .74);
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    top: 0;
+    left: 0
+}
+
+.record-form, .review-form, .pp-close-hint, .overlay {
+    display: none;
+}
+
+
+.show-record-form .overlay {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.7;
+    z-index: 100;
+}
+
+.show-review-form .overlay {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.7;
+    z-index: 100;
+}
+
+.show-close-form .overlay {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.7;
+    z-index: 100;
+}
+
+.show-close-form .pp-close-hint {
+    display: block;
+    position: fixed;
+    left: calc(50% - 250px);
+    top: calc(22% - 90px);
+    padding: 30px;
+    z-index: 200;
+    width: 650px;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.btn-emo {
+    background: #ccc !important;
+}
+
+.btn-reset:hover {
+    background: #ababab !important;
+}
+
+.btn-continue:hover {
+    background: #036b6b;
+}
+
+.btns-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.show-review-form .review-form {
+    display: block;
+    position: fixed;
+    height: 500px;
+    top: calc(22% - 90px);
+    left: calc(50% - 250px);
+    padding: 30px;
+    z-index: 200;
+    width: 650px;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.show-record-form .record-form {
+    display: block;
+    position: fixed;
+    height: 600px;
+    top: calc(22% - 90px);
+    left: calc(50% - 250px);
+    padding: 30px;
+    z-index: 200;
+    width: 650px;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.pp-close-hint .close-form {
+    position: absolute;
+    top: -35px;
+    right: -30px;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.review-form .close-form {
+    position: absolute;
+    top: -35px;
+    right: -30px;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.record-form .close-form {
+    position: absolute;
+    top: -35px;
+    right: -30px;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.close-form img:hover {
+    opacity: 0.7;
+}
+
+form .rate li {
+    cursor: pointer
+}
+
+.rate li {
+    display: inline-block;
+    width: 29px;
+    height: 24px;
+    background: url("../images/rating.png");
+    margin: 0 1px
+}
+
+.rate .empty {
+    background-position: 100% 0
+}
