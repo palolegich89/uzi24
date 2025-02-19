@@ -3,9 +3,9 @@ $arUrlRewrite=array (
   0 => 
   array (
     'CONDITION' => '#^/location/metro/(.*)/(.*)$#',
-    'RULE' => 'location=$1_metro&$2',
+    'RULE' => 'location=$1&$2',
     'ID' => '',
-    'PATH' => '/location/index.php',
+    'PATH' => '/location/detail_metro.php',
     'SORT' => 100,
   ),
   3 => 

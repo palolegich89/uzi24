@@ -42,6 +42,10 @@ $this->setFrameMode(true);
                     <div class="like_table">
                         <div class="table_cell">
                             <img class="img-responsive center-block" src="<?= $arItem["DISPLAY_PROPERTIES"]["AVATAR"]["FILE_VALUE"]["SRC"]; ?>" alt="<?= $arItem["NAME"]; ?>"/>
+                            <? if ($arItem["PROPERTIES"]["RATING"]["VALUE"]): ?>
+                            <div style="text-align: center;margin-top: 15px;font-size: large;font-weight: bold;"><img
+                                    src="/local/templates/uzi/images/stars.png"> <?= $arItem["PROPERTIES"]["RATING"]["VALUE"] ?>
+                            </div><? endif; ?>
                         </div>
                     </div>
                 </div>
