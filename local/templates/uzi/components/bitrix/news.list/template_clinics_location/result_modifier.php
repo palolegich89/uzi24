@@ -55,7 +55,7 @@ foreach ($arResult["ITEMS"] as $key => $value) {
 
 if (!empty($arResult["ITEMS"])) {
 	foreach ($arResult["ITEMS"] as &$clinicGroup) {
-		if (count($clinicGroup["SERVICES"]) > 3) {
+		if (is_array($clinicGroup["SERVICES"]) && count($clinicGroup["SERVICES"]) > 3) {
 			shuffle($clinicGroup["SERVICES"]);
 			$clinicGroup["SERVICES"] = array_slice($clinicGroup["SERVICES"], 0, 3);
 		}

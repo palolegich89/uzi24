@@ -182,13 +182,13 @@
     ); ?>
     <?$APPLICATION->IncludeFile(SITE_TEMPLATE_PATH . '/include/popups.php', false, ['SHOW_BORDER' => false]);?>
     <?$APPLICATION->ShowViewContent('popup');?>
-    <? /*$APPLICATION->IncludeComponent(
+    <? $APPLICATION->IncludeComponent(
         "bitrix:main.include",
         "",
         array(
             "AREA_FILE_SHOW" => "file",
             "PATH" => "/include/footer-counters.php"
         )
-    ); */?>
+    ); ?>
 </body>
 </html>

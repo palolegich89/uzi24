@@ -1,8 +1,8 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetPageProperty("description", "&laquo;УЗИ Круглосуточно&raquo; &mdash; это информационный портал, на котором собрана вся актуальная информация о клиниках и медицинских центрах, в которых проводится УЗИ 24 часа.");
+$APPLICATION->SetPageProperty("description", 'Информация о сайте "УЗИ круглосуточно". Изучайте цены и выбирайте лучший вариант. Актуальные адреса и номера телефонов для записи на УЗИ. Доступна онлайн-запись.');
 $APPLICATION->SetPageProperty("keywords", "узи круглосуточно, о проекте");
-$APPLICATION->SetPageProperty("title", "УЗИ Круглосуточно - информация о проекте");
+$APPLICATION->SetPageProperty("title", 'Информация о проекте "УЗИ круглосуточно"');
 $APPLICATION->SetTitle("О проекте");
 ?><h1>О проекте</h1>
 <div class="page__preview-desc">

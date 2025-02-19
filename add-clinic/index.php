@@ -1,7 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetPageProperty("description", "Добавить бесплатно клинику в каталог сайта УЗИ Круглосуточно.");
-$APPLICATION->SetPageProperty("keywords", "добавить клинику, добавить узи центр");
+$APPLICATION->SetPageProperty("description", 'Добавить клинику на сайт "УЗИ круглосуточно". Изучайте цены и выбирайте лучший вариант. Актуальные адреса и номера телефонов для записи на УЗИ. Доступна онлайн-запись.');
 $APPLICATION->SetPageProperty("title", "Добавить клинику на сайт УЗИ Круглосуточно");
 $APPLICATION->SetTitle("Добавить клинику");
 ?><h1>Добавить клинику</h1>

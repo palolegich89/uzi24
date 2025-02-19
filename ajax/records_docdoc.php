@@ -105,8 +105,8 @@ if (!empty($post_list['record_type'])) {
         die();
     } elseif ($order) {
         if ($response['Response']['status'] === 'success') {
-            $dateAdmissionTimeStamp = strtotime($arOrderPost['dateAdmission']);
-            $printDateAdmission = date("d.m.Y H:i", $dateAdmissionTimeStamp);
+			/*$dateAdmissionTimeStamp = strtotime($arOrderPost['dateAdmission']);
+$printDateAdmission = date("d.m.Y H:i", $dateAdmissionTimeStamp);*/
 
             CModule::IncludeModule("iblock");
 

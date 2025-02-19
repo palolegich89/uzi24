@@ -1,8 +1,7 @@
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetPageProperty("description", "Список УЗИ центров по метро и районам.");
-$APPLICATION->SetPageProperty("keywords", "узи центры, круглосуточно, метро, районы");
-$APPLICATION->SetPageProperty("title", "Круглосуточные клиники и диагностические центры по метро и районам");
-$APPLICATION->SetTitle("Cтанции метро Москвы");
+$APPLICATION->SetPageProperty("description", "Все станции метро, где можно круглосуточно сделать УЗИ. Изучайте цены и выбирайте лучший вариант. Актуальные адреса и номера телефонов для записи на УЗИ. Доступна онлайн-запись.");
+$APPLICATION->SetPageProperty("title", "Клиники с услугами круглосуточного УЗИ по метро и районам");
+$APPLICATION->SetTitle("Круглосуточное УЗИ по станциям метро Москвы");
 
 CModule::IncludeModule("iblock");
 CModule::IncludeModule("catalog");

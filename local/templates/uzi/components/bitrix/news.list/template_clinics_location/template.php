@@ -49,7 +49,7 @@ $this->setFrameMode(true);
                     <h3 class="clinic__name"><?= $arItem["NAME"]; ?></h3>
                     <p class="clinic__address"><?= $arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["VALUE"]; ?></p>
                     <p class="clinic__metro-distance">
-						<?= implode(", ", $arItem["DISPLAY_PROPERTIES"]["METRO"]["ITEMS"]); ?><br/><br/>
+						<? if(is_array($arItem["DISPLAY_PROPERTIES"]["METRO"]["ITEMS"])){echo implode(", ", $arItem["DISPLAY_PROPERTIES"]["METRO"]["ITEMS"]);}else{echo $arItem["DISPLAY_PROPERTIES"]["METRO"]["ITEMS"];}; ?><br/><br/>
 						<?= $arItem["DISPLAY_PROPERTIES"]["DESCRIPTION_UZI"]["VALUE"]["TEXT"]; ?>
                     </p>
                     <p class="clinic__phone">
