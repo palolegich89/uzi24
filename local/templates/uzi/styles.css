@@ -45,8 +45,10 @@ button.button-add {
 
 .spoiler {
     display: block;
+    border: 0;
+    color: #000;
+    font-weight: 500;
 }
-
 
 .header__chooser-select {
     float: left;

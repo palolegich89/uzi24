@@ -27,7 +27,7 @@ $h1 = !empty($arResult["META_TAGS"]["TITLE"]) ? $arResult["META_TAGS"]["TITLE"] 
 				<? echo $arResult["DISPLAY_PROPERTIES"]["TOP_TEXT"]["~VALUE"]["TEXT"]; ?>
 				<? if (!empty($arResult["DETAIL_TEXT"])): ?>
 					<span class="spoiler-text"><? echo $arResult["DETAIL_TEXT"]; ?></span>
-					<a class="spoiler" href="javascript:void(0);" aria-label="Читать текст полностью">Читать далее...</a>
+					<button type="button" class="spoiler">Читать далее...</button>
 				<? endif; ?>
 			</div>
 		</div>
