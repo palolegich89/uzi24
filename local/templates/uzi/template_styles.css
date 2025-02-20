@@ -8969,8 +8969,8 @@ textarea {
 }
 
 .page__sidebar .page__sidebar-nav ul li a {
-	color: #333a36;
-	font: 300 14px Roboto, sans-serif;
+	color: #000;
+	font: 400 15px Roboto, sans-serif;
 }
 
 .page__sidebar .page__sidebar-nav ul li.active {
@@ -9103,8 +9103,8 @@ textarea {
 }
 
 .page .page__content .content ul li {
-	color: #333;
-	font: 300 15px/27px Roboto, sans-serif;
+	color: #000;
+	font: 400 15px/27px Roboto, sans-serif;
 	padding-left: 15px;
 }
 
@@ -9127,7 +9127,7 @@ textarea {
 }
 
 button.button-find {
-	background: #f24841;
+	background: #FF0000;
 	border: none;
 	border-radius: 4px;
 	box-shadow: 0 0 7px rgba(46, 46, 46, .3);
@@ -9248,7 +9248,7 @@ button.button-find:hover {
 
 .clinic__list .clinic .clinic__logo {
 	float: left;
-	height: 165px;
+	/* height: 165px; */
 	width: 175px;
 }
 
@@ -9319,14 +9319,14 @@ button.button-find:hover {
 
 .clinic__list .clinic .clinic__info .clinic__address {
 	color: #000;
-	font: 300 14px Roboto, sans-serif;
+	font: 500 14px Roboto, sans-serif;
 	margin: 0 0 2px;
 	font-weight: bold;
 }
 
 .clinic__list .clinic .clinic__info .clinic__metro-distance {
-	color: #7b7b7b;
-	font: 300 13px Roboto, sans-serif;
+	color: #000;
+	font: 500 14px Roboto, sans-serif;
 	margin: 0 0 15px;
 }
 
@@ -9336,12 +9336,12 @@ button.button-find:hover {
 }
 
 .clinic__list .clinic .clinic__info .clinic__phone a {
-	color: #000;
-}
-
-.clinic__list .clinic .clinic__info .clinic__phone a {
-	color: #ff7900;
-	text-decoration: none;
+    color: #000000;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    background: #efefef;
+    border-radius: 6px;
 }
 
 .clinic__list .clinic .clinic__info .clinic__phone span {
@@ -9431,7 +9431,7 @@ button.button-find:hover {
 
 .clinic__list .clinic .clinic__price .clinic__price-data .clinic__price-value {
 	color: #fff;
-	background: #ff7900;
+	background: #ff5b00;
 	width: auto;
 	height: auto;
 	padding: 16px 0;
@@ -9448,8 +9448,8 @@ button.button-find:hover {
 
 .clinic__list .clinic .clinic__price .clinic__price-data .clinic__price-service {
 	border-radius: 10px;
-	color: #7b7b7b;
-	font: 300 13px Roboto, sans-serif;
+	color: #000;
+	font: 400 14px Roboto, sans-serif;
 	padding-bottom: 5px;
 	position: relative;
 }
@@ -9525,6 +9525,9 @@ button.button-find:hover {
 		padding-right: 0;
 		width: 70%;
 	}
+	.page .page__preview .page__preview-info {
+		margin: 0;
+	}
 }
 
 @media only screen and (max-width:550px) {
@@ -9539,7 +9542,7 @@ button.button-find:hover {
 	color: #000;
 	font: bold 30px "Open Sans Condensed", sans-serif;
 	margin: 0 0 25px;
-	width: max-content;
+	width: 100%;
 }
 
 .page .page__preview .page__preview-info .page__preview-desc {
