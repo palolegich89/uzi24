@@ -106,18 +106,7 @@ if (!empty($_GET['location']) && !strstr($_GET['location'], '_okrug')) {
         });
     });
 </script>
-<script type="text/javascript">
-    // <![CDATA[
-    jQuery(document).ready(function () {
-        jQuery('.spoiler-text').hide()
-        jQuery('.spoiler').click(function () {
-            jQuery(this).toggleClass("folded").toggleClass("unfolded").prev().slideToggle();
-            jQuery(this).css('display', 'none');
-            return false;
-        })
-    })
-    // ]]>
-</script>
+
 
 <link rel='stylesheet' id='style-fansybox-css'href='https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css?ver=master' type='text/css' media='all' />
 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js?ver=master' id='script-fansybox-js'></script>

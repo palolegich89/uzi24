@@ -22,6 +22,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700|Roboto:300,400,700&amp;amp;subset=cyrillic-ext"
           rel="stylesheet"/>
+          <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v20/your-font-file.woff2" as="font" type="font/woff2" crossorigin>
+
     <link type="text/css" href="<?= SITE_TEMPLATE_PATH ?>/js/ui/jqueryui.custom.css" rel="stylesheet"/>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
