@@ -187,7 +187,7 @@
         "",
         array(
             "AREA_FILE_SHOW" => "file",
-            "PATH" => "/include/footer-counters.php"
+            "PATH" => "/include/footer_counters.php"
         )
     ); ?>
 </body>
