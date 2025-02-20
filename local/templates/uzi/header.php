@@ -104,7 +104,7 @@
         <div class="main-page container">
             <div class="inner group">
 
-<? elseif ($APPLICATION->GetCurDir() == '/location/' && empty($_GET['location'])): ?>
+<? elseif (($APPLICATION->GetCurDir() == '/location/' && empty($_GET['location'])) || defined('ERROR_404')): ?>
     <main>
         <div class="page container">
             <div class="inside group">

@@ -1,4 +1,4 @@
-<? if ($page != 'main' && $APPLICATION->GetCurDir() != '/location/' && empty($_GET['location'])): ?>
+<? if (($page != 'main' && $APPLICATION->GetCurDir() != '/location/' && empty($_GET['location'])) && !defined('ERROR_404')): ?>
                     </div>
                 </div>
                 <aside class="page__sidebar">

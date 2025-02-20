@@ -9,7 +9,6 @@ $APPLICATION->SetTitle("Круглосуточные УЗИ клиники и д
 
 $services = array();
 CModule::IncludeModule("iblock");
-CModule::IncludeModule("catalog");
 $arFilter = array("IBLOCK_ID" => 4, "ACTIVE" => "Y");
 $res = CIBlockElement::GetList(
     array(),
