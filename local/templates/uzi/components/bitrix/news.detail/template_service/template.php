@@ -34,7 +34,7 @@ $h1 = !empty($arResult["META_TAGS"]["TITLE"]) ? $arResult["META_TAGS"]["TITLE"] 
 		<? if ($PRICE > 0): ?>
 			<div class="page__service text-center">
 				<? if ($arResult["PROPERTIES"]["AVATAR"]["SRC"]): ?>
-					<img class="img-responsive center-block img-circle" src="<?= $arResult["PROPERTIES"]["AVATAR"]["SRC"]; ?>" alt="<? echo $arResult["NAME"]; ?>" />
+					<img class="img-responsive center-block img-circle" src="<?= $arResult["PROPERTIES"]["AVATAR"]["SRC"]; ?>" width="<?= $arResult["PROPERTIES"]["AVATAR"]["WIDTH"]; ?>" height="<?= $arResult["PROPERTIES"]["AVATAR"]["HEIGHT"]; ?>" alt="<? echo $arResult["NAME"]; ?>" />
 				<? endif; ?>
 				<p><? echo $arResult["NAME"]; ?> <span><?= $PRICE ?></span></p>
 			</div>

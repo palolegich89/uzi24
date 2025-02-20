@@ -13,6 +13,8 @@
 
 $img = CFile::ResizeImageGet($arResult["PROPERTIES"]["AVATAR"]["VALUE"], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 $arResult["PROPERTIES"]["AVATAR"]["SRC"] = $img["src"];
+$arResult["PROPERTIES"]["AVATAR"]["WIDTH"] = $img["width"];
+$arResult["PROPERTIES"]["AVATAR"]["HEIGHT"] = $img["height"];
 
 $cat_info_g = gethlel(1, "UF_SERVICE", $arResult["ID"]);
 

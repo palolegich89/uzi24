@@ -378,3 +378,11 @@ form .rate li {
 .rate .empty {
     background-position: 100% 0
 }
+
+.bx-pagination .bx-pagination-container ul li.bx-pag-prev span {
+    background: #fff;
+    border: 2px solid #eff0f1;
+    line-height: 28px;
+    padding: 0 18px;
+    color: #444;
+}

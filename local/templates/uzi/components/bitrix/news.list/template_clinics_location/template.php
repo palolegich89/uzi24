@@ -65,9 +65,10 @@ $this->setFrameMode(true);
                                 width="<?= $file_logo['width']; ?>"
                                 height="<?= $file_logo['height']; ?>" />
                             <? if ($arItem["PROPERTIES"]["RATING"]["VALUE"]): ?>
-                                <div style="text-align: center;margin-top: 15px;font-size: large;font-weight: bold;"><img
-                                        src="/local/templates/uzi/images/stars.png"> <?= $arItem["PROPERTIES"]["RATING"]["VALUE"] ?>
-                                </div><? endif; ?>
+                                <div style="text-align: center;margin-top: 15px;font-size: large;font-weight: bold;">
+                                    <img src="/local/templates/uzi/images/stars.png"  width="45" height="45"> <?= $arItem["PROPERTIES"]["RATING"]["VALUE"] ?>
+                                </div>
+                            <? endif; ?>
                         </div>
                     </div>
                 </div>
