@@ -37,6 +37,8 @@ $this->setFrameMode(true);
 			$phone = $arItem["DISPLAY_PROPERTIES"]["PHONE"]["VALUE"];
 			$phoneUrl = $arItem["DISPLAY_PROPERTIES"]["PHONE"]["VALUE"];
 		}
+		$phone = PHONE_DOKDOK;
+		$phoneUrl = PHONE_DOKDOK_URL;
 		$file_logo = CFile::ResizeImageGet(
 			$arItem["DISPLAY_PROPERTIES"]["AVATAR"]["FILE_VALUE"],
 			array('width' => 175, 'height' => 165),
