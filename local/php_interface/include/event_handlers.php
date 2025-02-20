@@ -18,6 +18,7 @@ function orPagenMeta() {
 	unset($_GET['ELEMENT_ID']);
 	unset($_GET['SECTION_CODE']);
 	unset($_GET['SECTION_ID']);
+	unset($_GET['location']);
 
 	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
     $domain = $protocol . $_SERVER['SERVER_NAME'];
@@ -42,15 +43,7 @@ function orPagenMeta() {
 		$GLOBALS['APPLICATION']->SetPageProperty("robots", "noindex, follow");
 		$GLOBALS['APPLICATION']->AddHeadString('<link href="' . $domain . $GLOBALS['APPLICATION']->sDirPath . '" rel="canonical" />', true);
 	} else {
-        if (strpos($currentUrl, '/filter/') !== false) {
-            // Получаем путь до '/filter/'
-			//$canonicalPath = $domain . substr($currentUrl, 0, strpos($currentUrl, 'filter/'));
-    
-            //$GLOBALS['APPLICATION']->SetPageProperty("robots", "noindex, follow");
-            //$GLOBALS['APPLICATION']->AddHeadString('<link href="' . $canonicalPath . '" rel="canonical" />', true);
-        }
-
-		//$GLOBALS['APPLICATION']->SetPageProperty("robots", "index, follow");
+		$GLOBALS['APPLICATION']->SetPageProperty("robots", "index, follow");
 		//$GLOBALS['APPLICATION']->AddHeadString('<link href="https://' . $_SERVER['SERVER_NAME'] . $GLOBALS['APPLICATION']->sDirPath . '" rel="canonical" />', true);
 	}
 }
