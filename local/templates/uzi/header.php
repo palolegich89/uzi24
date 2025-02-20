@@ -28,6 +28,14 @@
     <script src="<?= SITE_TEMPLATE_PATH ?>/js/ui/jqueryui.custom.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
 	<? $APPLICATION->ShowHead(); ?>
+    <? $APPLICATION->IncludeComponent(
+        "bitrix:main.include",
+        "",
+        array(
+            "AREA_FILE_SHOW" => "file",
+            "PATH" => "/include/head_counters.php"
+        )
+    ); ?>
 </head>
 <body>
 <? $APPLICATION->ShowPanel(); ?>
