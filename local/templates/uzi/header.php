@@ -44,7 +44,7 @@
 <? if ($page == 'main'): ?>
     <div class="main-screen container group">
         <header class="header inner group">
-            <a class="header__logo" href="/"></a>
+            <a class="header__logo" href="/" aria-label="УЗИ круглосуточно"></a>
 			<? /*<div class="header__phone"><a href="tel:+74951060089">+7 (495) 106-00-89</a></div>*/ ?>
         </header>
         <div class="main-screen__title text-center">

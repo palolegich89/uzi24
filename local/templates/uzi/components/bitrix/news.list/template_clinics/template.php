@@ -15,7 +15,7 @@ $this->setFrameMode(true);
 ?>
 <h2 class="page__content-title">Где сделать <?= $arResult["SERVICE"]['NAME']; ?> круглосуточно</h2>
 <div class="clinic__list" id="clin_block">
-	<? foreach ($arResult["ITEMS"] as $arItem): ?>
+	<? foreach ($arResult["ITEMS"] as &$arItem): ?>
 		<?
 		$this->AddEditAction(
 			$arItem["ID"],
@@ -43,13 +43,22 @@ $this->setFrameMode(true);
 			BX_RESIZE_IMAGE_PROPORTIONAL_ALT,
 			true
 		);
+		foreach($arItem["DISPLAY_PROPERTIES"]["METRO"]["ITEMS"] as $key => $metro){
+			if(empty($metro)){
+				unset($arItem["DISPLAY_PROPERTIES"]["METRO"]["ITEMS"][$key]);
+			}
+		}
 		?>
 		<div class="clinic group" id="<?= $this->GetEditAreaId($arItem["ID"]); ?>">
 			<div class="clinic__logo">
 				<div class="like_table">
 					<div class="table_cell">
-						<img class="img-responsive center-block" src="<?= $file_logo['src'] ?>"
-							alt="<?= $arItem["NAME"]; ?>" />
+						<img
+							class="img-responsive center-block"
+							src="<?= $file_logo['src'] ?>"
+							alt="<?= $arItem["NAME"]; ?>"
+							width="<?= $file_logo['width']; ?>"
+							height="<?= $file_logo['height']; ?>" />
 						<? if ($arItem["PROPERTIES"]["RATING"]["VALUE"]): ?>
 							<div style="text-align: center;margin-top: 15px;font-size: large;font-weight: bold;"><img src="/local/templates/uzi/images/stars.png" alt="star" /> <?= $arItem["PROPERTIES"]["RATING"]["VALUE"] ?>
 							</div><? endif; ?>
@@ -69,6 +78,7 @@ $this->setFrameMode(true);
 				<p class="clinic__phone"><a href="tel:<?= $phoneUrl; ?>"><?= $phone; ?></a><? if (!empty($work_time)): ?><span> &mdash; <?= $work_time; ?></span><? endif; ?></p>
 
 				<button type="button" class="btn-record schedule__item info_data js-record" data-fancybox="" data-src="#record-popup" data-clinic="<?= $arItem["EXTERNAL_ID"] ?>">Записаться онлайн</button>
+
 				<? if (!empty($arResult["CLINIC_PRICE"][$arItem["ID"]])): ?>
 					<ul class="price_list">
 						<? foreach ($arResult["CLINIC_PRICE"][$arItem["ID"]] as $SERVICES):

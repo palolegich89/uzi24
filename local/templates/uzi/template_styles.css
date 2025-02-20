@@ -9127,7 +9127,7 @@ textarea {
 }
 
 button.button-find {
-	background: #FF0000;
+	background: #B30000;
 	border: none;
 	border-radius: 4px;
 	box-shadow: 0 0 7px rgba(46, 46, 46, .3);
@@ -9431,7 +9431,7 @@ button.button-find:hover {
 
 .clinic__list .clinic .clinic__price .clinic__price-data .clinic__price-value {
 	color: #fff;
-	background: #ff5b00;
+	background: #9E3600;
 	width: auto;
 	height: auto;
 	padding: 16px 0;
